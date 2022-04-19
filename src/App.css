@@ -1,14 +1,25 @@
 h1 {
-  margin-top: 0;
+  margin-top: 25px;
 }
 #body {
-  background-color: rgb(118, 118, 118);
+  
   color: white;
-  display: flex;
-  flex-direction: column;
+  display: flex;  
+  justify-content: center;
   align-items: center;
+  height: 90vh;
+  
 }
-
+#form{
+width: 600px;
+background-color: rgb(118, 118, 118);
+display: flex;
+flex-direction: column;
+justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  box-shadow: 12px 24px rgba(0, 0, 0, 0.324);
+}
 .listItem {
   display: flex;
   align-items: center;

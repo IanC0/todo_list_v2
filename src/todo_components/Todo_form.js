@@ -19,7 +19,7 @@ const Todo_form = (props) => {
 
     return (
         <form onSubmit={AddListItemHandler}>
-            <input onChange = {updateInputText}/>
+            <input onChange = {updateInputText} data-testid="input"/>
             <button type="submit">Submit</button> 
         </form>
 

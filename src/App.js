@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState} from 'react'  
 import './App.css';
 import Todo_form from './todo_components/Todo_form'
 
@@ -34,6 +34,12 @@ const App = () => {
     tempArray.splice(findArrayItemToDelete,1)
     setTodoArray([...tempArray])
   }
+  const closeOutstandingTodoFunction = (todo) => {
+    let tempArray = ([...todoArray])
+    let findArrayItemToDelete = tempArray.findIndex(element => element.key == todo.key)
+    tempArray.splice(findArrayItemToDelete,1)
+    setTodoArray([...tempArray])
+  }
   const closeCompletedTodoFunction = (todo) => {
     let tempArray = ([...completedArray])
     let findArrayItemToDelete = tempArray.findIndex(element => element.key == todo.key)
@@ -43,6 +49,7 @@ const App = () => {
 
   return (
     <div id="body">
+      <div id="form">
       <h1>Todo List</h1>
 
       <Todo_form addTodo={addTodoFunction}/>
@@ -51,12 +58,12 @@ const App = () => {
       <div className="outstanding">
       {todoArray.map(x => {
         return(
-          <div className="listItem" key={x.key} >
+          <div className="listItem" key={x.key} data-testid="outstandingListItem">
             <div className="checkAndText">
             <input type="checkbox" onClick={() => completeTodoFunction(x)}/>
-            <p>{x.text}</p>
+            <p data-testid='inputtedText'>{x.text}</p>
             </div>
-            <div id="closeButton" onClick={() => closeCompletedTodoFunction(x)}><p>x</p></div>
+            <div id="closeButton" onClick={() => closeOutstandingTodoFunction(x)}><p>x</p></div>
           </div>
         )
       })}
@@ -75,6 +82,7 @@ const App = () => {
           </div>
         )
       })}
+      </div>
       </div>
     </div>
   )
